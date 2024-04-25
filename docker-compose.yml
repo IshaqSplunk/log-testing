@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app:
+    container_name: myapp
+    image: myapp
+    build: .
+    ports:
+      - "3000:3000"
+      - "8088:8088"
+    # network_mode: "host"
+    logging:
+      driver: splunk
+      options:
+        splunk-token: 76dc0624-7190-4b5e-87ee-eca0b3a348da
+        splunk-url: https://host.docker.internal:8088
+        splunk-insecureskipverify: "true"
+
+
+
+# docker-compose -f docker-compose.yml up
